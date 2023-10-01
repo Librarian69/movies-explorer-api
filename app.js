@@ -8,7 +8,6 @@ const router = require('./routes');
 const auth = require('./middlewares/auth');
 const defaultErr = require('./errors/defaultError');
 const { login, createUser } = require('./controllers/users');
-const { validateUrl } = require('./middlewares/validation');
 const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 

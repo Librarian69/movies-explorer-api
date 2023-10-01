@@ -6,7 +6,6 @@ const Movie = require('../models/movie');
 module.exports.createMovie = (req, res, next) => {
   const { _id } = req.user;
 
-
   Movie
     .create({ ...req.body, owner: _id })
     .then((movie) => {

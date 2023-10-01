@@ -2,7 +2,7 @@ const movieRouter = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const {
   getMovies, deleteMovieById, createMovie
-} = require('../controllers/cards');
+} = require('../controllers/movies');
 const { validateUrl } = require('../middlewares/validation');
 
 movieRouter.get('/', getMovies);
