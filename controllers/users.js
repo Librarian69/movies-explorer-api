@@ -85,7 +85,7 @@ module.exports.updateProfile = (req, res, next) => {
       return res.send(user);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err.name === 'ValidationError' || err.name === 'CastError') {
         next(new BadRequest('переданы некорректные данные пользователя'));
       } else {
         next(err);
