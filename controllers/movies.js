@@ -21,7 +21,7 @@ module.exports.createMovie = (req, res, next) => {
 };
 
 module.exports.getMovies = (req, res, next) => {
-  Movie.find({})
+  Movie.find({ owner: req.user._id })
     .then((movie) => res.send(movie))
     .catch(next);
 };
@@ -33,7 +33,7 @@ module.exports.deleteMovieById = (req, res, next) => {
         throw new NotFound('фильм не найдена.');
       }
       if (!movie.owner.equals(req.user._id)) {
-        throw new Forbidden('Вы не можете удалять фильм');
+        throw new Forbidden('Вы не можете удалить фильм');
       }
       return movie.deleteOne().then(() => res.send({ message: 'Фильм удален' }));
     })

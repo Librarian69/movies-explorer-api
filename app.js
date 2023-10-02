@@ -11,10 +11,10 @@ const { login, createUser } = require('./controllers/users');
 const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, NODE_ENV, URL_DB_PROD } = process.env;
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+mongoose.connect(NODE_ENV === 'production' ? URL_DB_PROD : 'mongodb://127.0.0.1:27017/mestodb');
 
 app.use(bodyParser.json());
 
