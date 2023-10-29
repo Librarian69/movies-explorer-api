@@ -4,7 +4,7 @@ const validateUrl = /https?:\/\/(www\.)?[a-z0-9.-]{2,}\.[a-z]{2,}\/?[-._~:/?#[\]
 
 const movieIdValid = celebrate({
   params: Joi.object().keys({
-    movieId: Joi.string().required().length(24).hex()
+    movieId: Joi.string().required().hex()
   })
 });
 
