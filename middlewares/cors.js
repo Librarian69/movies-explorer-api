@@ -3,7 +3,8 @@ const allowedCors = [
   'http://movies-mikhail.nomoredomainsrocks.ru',
   'https://api.movies-mikhail.nomoredomainsrocks.ru',
   'http://api.movies-mikhail.nomoredomainsrocks.ru',
-  'localhost:3000'
+  'localhost:3000',
+  'http://localhost:3000'
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
