@@ -27,15 +27,13 @@ module.exports.getMovies = (req, res, next) => {
 };
 
 module.exports.deleteMovieById = (req, res, next) => {
-  Movie.findById({ movieId: req.params.movieId })
+  Movie.findOne({ movieId: req.params.movieId })
     .then((movie) => {
       if (!movie) {
         throw new NotFound('фильм не найдена.');
-      }
-      if (!movie.owner.equals(req.user._id)) {
+      } else if (!movie.owner.equals(req.user._id)) {
         throw new Forbidden('Вы не можете удалить фильм');
-      }
-      return movie.deleteOne().then(() => res.send({ message: 'Фильм удален' }));
+      } else { movie.deleteOne().then(() => res.send({ message: 'Фильм удален' })); }
     })
     .catch((err) => {
       if (err.name === 'CastError') {
